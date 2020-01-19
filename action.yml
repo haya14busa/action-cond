@@ -17,3 +17,8 @@ outputs:
 runs:
   using: 'node12'
   main: 'dist/index.js'
+
+# Ref: https://haya14busa.github.io/github-action-brandings/
+branding:
+  icon: 'help-circle'
+  color: 'white'
