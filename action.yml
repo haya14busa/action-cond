@@ -13,7 +13,7 @@ inputs:
     required: true
 outputs:
   value:
-  description: 'output value'
+    description: 'output value'
 runs:
   using: 'node12'
   main: 'dist/index.js'
