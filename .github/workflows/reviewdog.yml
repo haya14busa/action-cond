@@ -1,0 +1,23 @@
+name: reviewdog
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+jobs:
+  eslint:
+    name: runner / eslint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ./
+        id: reporter
+        with:
+          cond: ${{ github.event_name == 'pull_request' }}
+          if_true: "github-pr-review"
+          if_false: "github-check"
+      - uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          eslint_flags: 'src/**/*.ts'
+          reporter: ${{ steps.reporter.outputs.value }}
