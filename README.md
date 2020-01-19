@@ -38,6 +38,7 @@ https://github.com/reviewdog/action-eslint
 
 ```yaml
 steps:
+- uses: actions/checkout@v1
 - uses: haya14busa/action-cond@v1
   id: reporter
   with:
@@ -45,7 +46,8 @@ steps:
     if_true: "github-pr-review"
     if_false: "github-check"
 - uses: reviewdog/action-eslint@v1
-	github_token: ${{ secrets.github_token }}
-	eslint_flags: 'src/**/*.ts'
-	reporter: ${{ steps.reporter.outputs.value }}
+  with:
+    github_token: ${{ secrets.github_token }}
+    eslint_flags: 'src/**/*.ts'
+    reporter: ${{ steps.reporter.outputs.value }}
 ```
