@@ -1,10 +1,19 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Conditional value for GitHub Action'
+description: 'Conditional value for GitHub Action - missing expression for GitHub Actions'
+author: 'haya14busa'
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  cond:
+    description: 'condition. [true,false]'
+    required: true
+  if_true:
+    description: 'output value if cond is true'
+    required: true
+  if_false:
+    description: 'output value if cond is false'
+    required: true
+outputs:
+  value:
+    description: 'output value'
 runs:
   using: 'node12'
   main: 'dist/index.js'

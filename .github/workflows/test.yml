@@ -1,23 +1,55 @@
 name: "build-test"
-on: # rebuild any PRs and main branch changes
+on:
   pull_request:
   push:
     branches:
       - master
-      - 'releases/*'
 
 jobs:
-  build: # make sure build/ci work properly
+  build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - run: |
         npm install
         npm run all
-  test: # make sure the action works on a clean machine without building
+  test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: ./
-      with: 
-        milliseconds: 1000
+    - uses: actions/checkout@v2
+
+    - name: set testval
+      id: testval
+      uses: ./
+      with:
+        cond: true
+        if_true: "true value"
+        if_false: "false value"
+    - name: check testval
+      run: test "${{ steps.testval.outputs.value }}" = "true value"
+
+    - name: set falseval
+      id: falseval
+      uses: ./
+      with:
+        cond: false
+        if_true: "true value"
+        if_false: "false value"
+    - name: check falseval
+      run: test "${{ steps.falseval.outputs.value }}" = "false value"
+
+    - name: Test with GitHub Actions expression
+      id: event
+      uses: ./
+      with:
+        cond: ${{ github.event_name == 'pull_request' }}
+        if_true: "value for pull request event"
+        if_false: "value for non pull request event"
+    - name: check event
+      run: echo "${{ steps.event.outputs.value }}"
+    - name: check event (PR)
+      if: github.event_name == 'pull_request'
+      run: test "${{ steps.event.outputs.value }}" = "value for pull request event"
+    - name: check event (non-PR)
+      if: github.event_name != 'pull_request'
+      run: test "${{ steps.event.outputs.value }}" = "value for non pull request event"

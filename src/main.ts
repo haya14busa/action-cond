@@ -1,16 +1,11 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`)
-
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
+    const cond: string = core.getInput('cond', {required: true})
+    const ifTrue: string = core.getInput('if_true', {required: true})
+    const ifFalse: string = core.getInput('if_false', {required: true})
+    core.setOutput('value', cond === 'true' ? ifTrue : ifFalse)
   } catch (error) {
     core.setFailed(error.message)
   }
