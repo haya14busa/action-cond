@@ -1,5 +1,10 @@
 # Conditional value - missing expression for GitHub Actions
 
+[![test](https://github.com/haya14busa/action-cond/workflows/test/badge.svg)](https://github.com/haya14busa/action-cond/actions?query=workflow%3Atest)
+[![reviewdog](https://github.com/haya14busa/action-cond/workflows/reviewdog/badge.svg)](https://github.com/haya14busa/action-cond/actions?query=workflow%3Areviewdog)
+[![release](https://github.com/haya14busa/action-cond/workflows/release/badge.svg)](https://github.com/haya14busa/action-cond/actions?query=workflow%3Arelease)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/haya14busa/action-cond?logo=github&sort=semver)](https://github.com/haya14busa/action-cond/releases)
+
 ```yaml
 inputs:
   cond:
