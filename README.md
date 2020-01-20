@@ -1,4 +1,4 @@
-# Conditional value for GitHub Action - missing expression for GitHub Actions
+# Conditional value - missing expression for GitHub Actions
 
 ```yaml
 inputs:
