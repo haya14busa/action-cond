@@ -77,8 +77,8 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const cond = core.getInput('cond', { required: true });
-            const ifTrue = core.getInput('if_true', { required: true });
-            const ifFalse = core.getInput('if_false', { required: true });
+            const ifTrue = core.getInput('if_true');
+            const ifFalse = core.getInput('if_false');
             core.setOutput('value', cond === 'true' ? ifTrue : ifFalse);
         }
         catch (error) {

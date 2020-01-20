@@ -1,5 +1,5 @@
-name: 'Conditional value for GitHub Action'
-description: 'Conditional value for GitHub Action - missing expression for GitHub Actions'
+name: 'Conditional value - missing expression for GitHub Actions'
+description: 'Conditional value - missing expression for GitHub Actions'
 author: 'haya14busa'
 inputs:
   cond:
@@ -7,10 +7,10 @@ inputs:
     required: true
   if_true:
     description: 'output value if cond is true'
-    required: true
+    default: ''
   if_false:
     description: 'output value if cond is false'
-    required: true
+    default: ''
 outputs:
   value:
     description: 'output value'

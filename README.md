@@ -12,10 +12,8 @@ inputs:
     required: true
   if_true:
     description: 'output value if cond is true'
-    required: true
   if_false:
     description: 'output value if cond is false'
-    required: true
 outputs:
   value:
     description: 'output value'

@@ -24,3 +24,14 @@ test('test runs (false)', () => {
   }
   console.log(cp.execSync(`node ${ip}`, options).toString())
 })
+
+test('test runs (empty)', () => {
+  process.env['INPUT_COND'] = 'true'
+  process.env['INPUT_IF_TRUE'] = ''
+  process.env['INPUT_IF_FALSE'] = 'value-if-false'
+  const ip = path.join(__dirname, '..', 'lib', 'main.js')
+  const options: cp.ExecSyncOptions = {
+    env: process.env
+  }
+  console.log(cp.execSync(`node ${ip}`, options).toString())
+})
