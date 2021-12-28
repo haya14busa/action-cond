@@ -7,7 +7,11 @@ async function run(): Promise<void> {
     const ifFalse: string = core.getInput('if_false')
     core.setOutput('value', cond === 'true' ? ifTrue : ifFalse)
   } catch (error) {
-    core.setFailed(error.message)
+    if (error instanceof Error) {
+      core.setFailed(error.message)
+    } else {
+      core.setFailed(JSON.stringify(error))
+    }
   }
 }
 
