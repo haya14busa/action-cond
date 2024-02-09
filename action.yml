@@ -15,7 +15,7 @@ outputs:
   value:
     description: 'output value'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
 
 # Ref: https://haya14busa.github.io/github-action-brandings/
